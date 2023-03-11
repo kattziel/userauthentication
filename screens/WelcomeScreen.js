@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 
 import { StyleSheet, Text, View } from "react-native";
 import { AuthContext } from "../store/auth-context";
@@ -19,12 +19,12 @@ function WelcomeScreen() {
       .then((response) => {
         setFetchedMessage(response.data);
       });
-  }, []);
+  }, [token]);
 
   return (
     <View style={styles.rootContainer}>
       <Text style={styles.title}>Welcome!</Text>
-      <Text>{response.data}</Text>
+      <Text>{fetchedMessage}</Text>
     </View>
   );
 }
